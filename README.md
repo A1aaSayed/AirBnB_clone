@@ -14,18 +14,18 @@ The AirBnB Clone Command Interpreter is a Python-based tool designed to manage A
 
 ### How to Use
 Once the command interpreter is running, you can interact with it using the following way:
-(hbnb) <command> [agruments]
+`(hbnb) <command> [agruments]`
 
 ### Examples
 ##### 1. Creating an Object:
-`(cmd) create User`
+`(hbnb) create User`
 ##### 2. Showing Object Information:
-`(cmd) show User 1`
+`(hbnb) show User`
 ##### 3. Updating Object Attributes:
-`(cmd) update User 1 name Alaa`
+`(hbnb) update User name Alaa`
 ##### 4. Destroying an Object:
-`(cmd) destroy User 1`
+`(hbnb) destroy User`
 ##### 5. Listing All Objects of a Class:
-`(cmd) all User`
+`(hbnb) all User`
 ##### 6. Exiting the Command Interpreter:
-`(cmd) quit`
+`(hbnb) quit`
