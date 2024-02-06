@@ -18,4 +18,4 @@ Once the command interpreter is running, you can interact with it using the foll
 
 ### Examples
 **1. Creating an Object:**
-(cmd) create User
+`(cmd) create User`
