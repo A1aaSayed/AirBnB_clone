@@ -19,3 +19,13 @@ Once the command interpreter is running, you can interact with it using the foll
 ### Examples
 **1. Creating an Object:**
 `(cmd) create User`
+**2. Showing Object Information:**
+`(cmd) show User 1`
+**3. Updating Object Attributes:**
+`(cmd) update User 1 name Alaa`
+**4. Destroying an Object:**
+`(cmd) destroy User 1`
+**5. Listing All Objects of a Class:**
+`(cmd) all User`
+**6. Exiting the Command Interpreter:**
+`(cmd) quit`
