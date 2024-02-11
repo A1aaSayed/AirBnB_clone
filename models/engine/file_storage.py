@@ -5,6 +5,13 @@ deserializes JSON file to instances
 """
 
 import json
+from models.base_model import BaseModel
+from models.amenity import Amenity
+from models.city import City
+from models.place import Place
+from models.review import Review
+from models.state import State
+from models.user import User
 
 
 class FileStorage:
@@ -31,14 +38,7 @@ class FileStorage:
 
     def reload(self):
         """deserializes the JSON file to objects"""
-        from models.base_model import BaseModel
-        from models.amenity import Amenity
-        from models.city import City
-        from models.place import Place
-        from models.review import Review
-        from models.state import State
-        from models.user import User
-        inst_dict = {
+        instances_dict = {
             'BaseModel': BaseModel, 'Amenity': Amenity,
             'City': City, 'Place': Place, 'Review': Review,
             'State': State, 'User': User
@@ -47,6 +47,6 @@ class FileStorage:
             with open(self.__file_path, 'r') as file:
                 data = json.load(file)
                 for value in data.values():
-                    self.new(inst_dict[value['__class__']](**value))
+                    self.new(instances_dict[value['__class__']](**value))
         except FileNotFoundError:
             pass
