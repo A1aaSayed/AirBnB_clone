@@ -18,25 +18,35 @@ class FileStorage:
     
     def new(self, obj):
         """sets in objects the obj with key"""
-        key = obj.__class__.__name__ + '.' + obj.id
+        key = f'{obj.__class__.__name__}.{obj.id}'
         self.__objects[key] = obj
 
     def save(self):
         """serializes objects to the JSON file"""
-        serialized_object = {}
+        dictt = {}
         for key, value in self.__objects.items():
-            serialized_object[key] = value.to_dict()
+            dictt[key] = value.to_dict()
         with open(self.__file_path, 'w') as file:
-            json.dump(serialized_object, file)
+            json.dump(dictt, file)
     
     def reload(self):
         """deserializes the JSON file to objects"""
+        from models.base_model import BaseModel
+        from models.amenity import Amenity
+        from models.city import City
+        from models.place import Place
+        from models.review import Review
+        from models.state import State
+        from models.user import User
+        instances_dict = {
+            'BaseModel': BaseModel, 'Amenity': Amenity,
+            'City': City, 'Place': Place, 'Review': Review,
+            'State': State, 'User': User
+        }
         try:
             with open(self.__file_path, 'r') as file:
                 data = json.load(file)
-                for key, value in data.items():
-                    name, id_ = key.split('.')
-                    clas = eval(name)
-                    self.__objects[key] = clas(**value)
+                for value in data.values():
+                    self.new(instances_dict[value['__class__']](**value))
         except FileNotFoundError:
             pass

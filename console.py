@@ -4,6 +4,12 @@
 import cmd
 from models.base_model import BaseModel
 from models import storage
+from models.user import User
+from models.amenity import Amenity
+from models.city import City
+from models.place import Place
+from models.review import Review
+from models.state import State
 
 
 class HBNBCommand(cmd.Cmd):
@@ -19,10 +25,11 @@ class HBNBCommand(cmd.Cmd):
             print('** class name missing **')
         else:
             command = line.split()
+            class_name = command[0]
             if command[0] not in self.classes:
                 print("** class doesn't exist **")
             else:
-                instance = BaseModel()
+                instance = eval(class_name)()
                 instance.save()
                 print(instance.id)
 
@@ -34,7 +41,7 @@ class HBNBCommand(cmd.Cmd):
             command = line.split()
             if command[0] not in self.classes:
                 print("** class doesn't exist **")
-            if len(command < 2):
+            if len(command) < 2:
                 print('** instance id missing **')
             else:
                 instances = storage.all()
@@ -52,7 +59,7 @@ class HBNBCommand(cmd.Cmd):
             command = line.split()
             if command[0] not in self.classes:
                 print("** class doesn't exist **")
-            if len(command < 2):
+            if len(command) < 2:
                 print('** instance id missing **')
             else:
                 instance = storage.all()
@@ -66,13 +73,17 @@ class HBNBCommand(cmd.Cmd):
     def do_all(self, line):
         """Prints all string representation"""
         command = line.split()
-        if command[0] not in self.classes:
-            print("** class doesn't exist **")
+        instance = storage.all()
+        instances = []
+        for value in instance.values():
+            instances.append(str(value))
+        if line:
+            if line not in self.classes:
+                print("** class doesn't exist **")
+            else:
+                print(instances)
         else:
-            instance = storage.all()
-            for obj in instance.values():
-                if type(obj).__name__ == command[0]:
-                    print([str(obj)])
+            print(instances)
 
     def do_update(self, line):
         """Updates an instance"""
@@ -82,16 +93,16 @@ class HBNBCommand(cmd.Cmd):
             command = line.split()
             if command[0] not in self.classes:
                 print("** class doesn't exist **")
-            if len(command < 2):
+            if len(command) < 2:
                 print('** instance id missing **')
             else:
                 instance = storage.all()
                 key = f'{command[0]}.{command[1]}'
                 if key not in instance:
                     print('** no instance found **')
-                if len(command < 3):
+                if len(command) < 3:
                     print('** attribute name missing **')
-                if len(command < 4):
+                if len(command) < 4:
                     print('** value missing **')
                 setattr(instance[key], command[2], command[3])
                 instance[key].save()

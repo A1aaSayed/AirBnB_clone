@@ -4,10 +4,14 @@
 import unittest
 from models.base_model import BaseModel
 from models.engine.file_storage import FileStorage
+from models import storage
 
 
 class TestFileStorage(unittest.TestCase):
     """Test cases for the FileStorage class"""
+    obj = BaseModel()
+    all_objects = storage.all()
+    stor = storage.new(obj)
 
     def setUp(self):
         """Set up method to initialize FileStorage"""
@@ -18,10 +22,11 @@ class TestFileStorage(unittest.TestCase):
 
     def test_new(self):
         """Test the new method"""
+        
 
     def test_save(self):
         """Test the save method"""
-
+        
     def test_reload(self):
         """Test the reload method"""
 
