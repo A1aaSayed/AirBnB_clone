@@ -10,7 +10,7 @@ from models import storage
 
 class BaseModel:
     """
-    Base Model that defines all common attributes/methods 
+    Base Model that defines all common attributes/methods
     for other classes
     """
 
