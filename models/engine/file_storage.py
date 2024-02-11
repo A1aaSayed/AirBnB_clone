@@ -38,7 +38,7 @@ class FileStorage:
         from models.review import Review
         from models.state import State
         from models.user import User
-        instances_dict = {
+        inst_dict = {
             'BaseModel': BaseModel, 'Amenity': Amenity,
             'City': City, 'Place': Place, 'Review': Review,
             'State': State, 'User': User
@@ -47,6 +47,6 @@ class FileStorage:
             with open(self.__file_path, 'r') as file:
                 data = json.load(file)
                 for value in data.values():
-                    self.new(instances_dict[value['__class__']](**value))
+                    self.new(inst_dict[value['__class__']](**value))
         except FileNotFoundError:
             pass
