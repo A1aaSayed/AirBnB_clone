@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """
-Module for initialization, serialization and deserialization
- of other instances
+Module for initialization, serialization and
+deserialization of other instances
 """
 import uuid
 from datetime import datetime

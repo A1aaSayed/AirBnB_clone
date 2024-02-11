@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """
-Module that serializes instances to a JSON file and deserializes
-JSON file to instances
+Module that serializes instances to a JSON file and
+deserializes JSON file to instances
 """
 
 import json
@@ -15,7 +15,7 @@ class FileStorage:
     def all(self):
         """Method that returns the dictionary objects"""
         return self.__objects
-    
+
     def new(self, obj):
         """sets in objects the obj with key"""
         key = f'{obj.__class__.__name__}.{obj.id}'
@@ -28,7 +28,7 @@ class FileStorage:
             dictt[key] = value.to_dict()
         with open(self.__file_path, 'w') as file:
             json.dump(dictt, file)
-    
+
     def reload(self):
         """deserializes the JSON file to objects"""
         from models.base_model import BaseModel
