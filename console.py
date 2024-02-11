@@ -19,6 +19,19 @@ class HBNBCommand(cmd.Cmd):
     classes = ['BaseModel', 'User', 'State', 'City',
                'Amenity', 'Place', 'Review']
 
+    def do_quit(self, line):
+        """Exit the program"""
+        return True
+
+    def do_EOF(self, line):
+        """Exit the program"""
+        print()
+        return True
+
+    def emptyline(self):
+        """Execute anything when press Enter"""
+        pass
+
     def do_create(self, line):
         """Creates a new instance of BaseModel"""
         if not line:
@@ -106,19 +119,6 @@ class HBNBCommand(cmd.Cmd):
                     print('** value missing **')
                 setattr(instance[key], command[2], command[3])
                 instance[key].save()
-
-    def do_quit(self, line):
-        """Exit the program"""
-        return True
-
-    def do_EOF(self, line):
-        """Exit the program"""
-        print()
-        return True
-
-    def emptyline(self):
-        """Execute anything when press Enter"""
-        pass
 
 
 if __name__ == '__main__':
