@@ -1,0 +1,23 @@
+.container .filters .locations,
+.container .filters .amenities {
+  height: 100%;
+  width: 25%;
+  display: inline-block;
+}
+.container .filters .locations {
+  border-right: 1px solid #dddddd;
+}
+.container .filters .locations h3,
+.container .filters .amenities h3 {
+  font-weight: 600;
+  margin-top: auto;
+  padding: 17.5px 0 0 50px;
+  margin: 0;
+}
+.container .filters .locations h4,
+.container .filters .amenities h4 {
+  font-weight: 400;
+  font-size: 14px;
+  padding-left: 50px;
+  margin: 0;
+}
